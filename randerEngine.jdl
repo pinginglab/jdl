@@ -1,0 +1,56 @@
+entity Scenes{
+    name String
+    creater String
+    type String
+    createTime Instant
+    waitingTime Instant
+    extendTime Integer
+    app String
+}
+
+entity App {
+    image String
+    network String
+    port String
+    volume String
+    enviroment TextBlob
+}
+
+entity Ports {
+    hostPort String
+    containerPort String
+}
+
+entity Images {
+    creater String
+    name String
+    description String
+    creatTime Instant
+}
+
+
+entity Networks {
+    type String
+    other String
+}
+
+relationship OneToMany {
+  Scenes{app} to App
+  App{port} to Ports
+}
+
+relationship OneToOne {
+    App{network} to Networks
+    App{image} to Images
+}
+
+
+// Set pagination options
+paginate * with infinite-scroll
+paginate * with pagination
+dto * with mapstruct
+// Set service options to all except few
+service all with serviceImpl
+// Set an angular suffix
+angularSuffix * with mySuffix
+microservice * with randerEngine
