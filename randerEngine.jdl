@@ -6,6 +6,7 @@ entity Scenes{
     waitingTime Instant
     extendTime Integer
     app String
+    other TextBlob
 }
 
 entity App {
@@ -13,7 +14,15 @@ entity App {
     network String
     port String
     volume String
-    enviroment TextBlob
+    environment TextBlob
+    other TextBlob
+}
+
+entity Tasks{
+    name String
+    content TextBlob
+    createTime Instant
+    buildTime Instant
 }
 
 entity Ports {
@@ -26,6 +35,8 @@ entity Images {
     name String
     description String
     creatTime Instant
+    hashCode String
+    port String
 }
 
 
@@ -35,13 +46,14 @@ entity Networks {
 }
 
 relationship OneToMany {
-  Scenes{app} to App
-  App{port} to Ports
+  Scenes to App
+  App to Ports
 }
 
 relationship OneToOne {
-    App{network} to Networks
-    App{image} to Images
+    App to Networks
+    App to Images
+    Tasks to App 
 }
 
 
