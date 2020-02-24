@@ -1,0 +1,20 @@
+entity Course {
+	name String
+	author String
+	creater String
+	protect String
+	picture ImageBlob
+	createrIng TextBlob
+	other TextBlob
+	score String
+}
+
+// Set pagination options
+paginate * with infinite-scroll
+paginate * with pagination
+dto * with mapstruct
+// Set service options to all except few
+service all with serviceImpl
+// Set an angular suffix
+angularSuffix * with mySuffix
+microservice * with randerEngine
