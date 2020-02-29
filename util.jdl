@@ -1,19 +1,27 @@
-entity Course {
-	name String
-	author String
-	builder String
-	createrIng TextBlob
-	other TextBlob
-	score String
-	latestDate Instant
+entity UploadFile {
+    uploadTime String
 }
+
+entity DownloadFile {
+	name String
+    downloadTime Instant
+    count Integer
+}
+
+
+relationship OneToOne {
+	UploadFile{name} to DownloadFile
+}
+
+
 
 // Set pagination options
 paginate * with infinite-scroll
 paginate * with pagination
+
 dto * with mapstruct
+
 // Set service options to all except few
 service all with serviceImpl
 // Set an angular suffix
-angularSuffix * with mySuffix
-microservice * with randerEngine
+angularSuffix * with util
